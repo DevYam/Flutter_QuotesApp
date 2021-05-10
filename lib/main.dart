@@ -36,7 +36,13 @@ class _QuotesState extends State<Quotes> {
         // Map function will run on the list of quotes and return an iterable which is then converted to a list
         // children: quotes.map((objQuote) =>Text('${objQuote.text} - ${objQuote.author}')).toList(),
 
-        children: quotes.map((objQuote) =>QuoteCard(quote: objQuote)).toList(),
+        children: quotes.map((objQuote) =>QuoteCard(
+          quote: objQuote,
+          delete: (){
+          setState(() {
+            quotes.remove(objQuote);
+          });
+        },)).toList(),
       ),
     );
   }
